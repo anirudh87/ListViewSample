@@ -41,11 +41,17 @@
             <FrameLayout
                 android:id="@+id/outercontainer"
                 style="@style/FullWidthContainer">
+
+                <android.support.v4.widget.SwipeRefreshLayout
+                    android:id="@+id/swipeRefreshLayout"
+                    style="@style/FullWidthContainer">
+
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/itemsRecyclerView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scrollbars="vertical" />
+                </android.support.v4.widget.SwipeRefreshLayout>
             </FrameLayout>
         </LinearLayout>
     </android.support.design.widget.CoordinatorLayout>

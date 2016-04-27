@@ -16,8 +16,9 @@ import com.squareup.picasso.Picasso;
 import com.test.listviewsample.BR;
 import com.test.listviewsample.R;
 import com.test.listviewsample.models.Fact;
-import java.util.ArrayList;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class CustomItemsAdapter extends RecyclerView.Adapter<CustomItemsAdapter.CustomViewHolder> {
@@ -39,7 +40,7 @@ public class CustomItemsAdapter extends RecyclerView.Adapter<CustomItemsAdapter.
 
     @Override
     public CustomViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_item_layout,  viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_item_layout, viewGroup, false);
         CustomViewHolder viewHolder = new CustomViewHolder(view);
         return viewHolder;
     }
@@ -69,6 +70,12 @@ public class CustomItemsAdapter extends RecyclerView.Adapter<CustomItemsAdapter.
         public ViewDataBinding getBinding() {
             return binding;
         }
+    }
+
+    public void addAll(List<Fact> list) {
+        facts.clear();
+        facts.addAll(list);
+        notifyDataSetChanged();
     }
 
 }
