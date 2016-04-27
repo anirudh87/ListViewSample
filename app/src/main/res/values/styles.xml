@@ -1,11 +1,9 @@
 <resources>
 
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">@color/colorPrimaryDark</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -17,4 +15,62 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="TopTitleTVStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="FullWidthContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="OuterLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="WrapContentStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="OuterVerticalLinearLayout" parent="OuterLayout">
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="OuterHorizontalLinearLayout" parent="OuterLayout">
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="ListItemVerticalLinearLayout" parent="OuterVerticalLinearLayout">
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <style name="ImageViewContainer">
+        <item name="android:layout_width">0dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="BottomItemViewContainer">
+        <item name="android:layout_width">0dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">2.5</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="TitleTVStyle" parent="WrapContentStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="DescTVStyle" parent="WrapContentStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginTop">15dp</item>
+    </style>
 </resources>

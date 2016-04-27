@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="fact"
+            type="com.test.listviewsample.models.Fact" />
+    </data>
+
+    <LinearLayout style="@style/ListItemVerticalLinearLayout">
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/TitleTVStyle"
+            android:text="@{fact.title}"
+            />
+        <LinearLayout
+            style="@style/OuterHorizontalLinearLayout">
+            <LinearLayout
+                style="@style/BottomItemViewContainer">
+                <TextView
+                    android:id="@+id/tv_desc"
+                    style="@style/DescTVStyle"
+                    android:text="@{fact.description}"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                style="@style/ImageViewContainer">
+                <ImageView
+                    android:id="@+id/iv_image"
+                    style="@style/WrapContentStyle"
+                    app:imageUrl="@{fact.imageHref}"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

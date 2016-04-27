@@ -1,28 +1,45 @@
 package com.test.listviewsample.activity;
 
 import android.app.ProgressDialog;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.test.listviewsample.R;
+import com.test.listviewsample.adapters.CustomItemsAdapter;
 import com.test.listviewsample.interfaces.CallBack;
 import com.test.listviewsample.managers.CommunicationManager;
+import com.test.listviewsample.models.FactData;
 import com.test.listviewsample.utility.Constants;
+import com.test.listviewsample.databinding.ActivityMainBinding;
+import com.test.listviewsample.utility.SimpleDividerItemDecoration;
+
 
 public class MainActivity extends AppCompatActivity implements CallBack{
 
     private ProgressDialog pd;
     private CommunicationManager commObj;
+    private RecyclerView itemsRecyclerView;
+    ActivityMainBinding binding;
+    private CustomItemsAdapter objAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         commObj = new CommunicationManager(this);
+
+        itemsRecyclerView = (RecyclerView) findViewById(R.id.itemsRecyclerView);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        itemsRecyclerView.setLayoutManager(layoutManager);
+        itemsRecyclerView.addItemDecoration(new SimpleDividerItemDecoration(this));
 
     }
 
@@ -50,15 +67,23 @@ public class MainActivity extends AppCompatActivity implements CallBack{
             pd.dismiss();
             pd.cancel();
         }
-        if (tasksID == Constants.TASK_FETCH_DATA) {
-            try {
-                Log.e("Response Data", ">" + data);
-            } catch (Exception e) {
-                Log.e("Exception", ">" + e);
-                e.printStackTrace();
+        Gson objgson = new Gson();
+        try {
+            FactData objFacts = objgson.fromJson(data, FactData.class);
+            binding.setFactdata(objFacts);
+
+            if (tasksID == Constants.TASK_FETCH_DATA) {
+                if (binding.getFactdata().getRows().size() > 0) {
+
+                    objAdapter = new CustomItemsAdapter(this, objFacts.getRows());
+                    itemsRecyclerView.setAdapter(objAdapter);
+                }
             }
+
+        } catch (Exception e) {
+            Toast.makeText(this, "Some error has occurred. Please try again.", Toast.LENGTH_SHORT).show();
+            Log.e("Exception", ">" + e);
+            e.printStackTrace();
         }
-
-
     }
 }
