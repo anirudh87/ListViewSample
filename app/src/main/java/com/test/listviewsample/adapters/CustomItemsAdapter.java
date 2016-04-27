@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
 import com.test.listviewsample.BR;
 import com.test.listviewsample.R;
 import com.test.listviewsample.models.Fact;
@@ -32,6 +34,7 @@ public class CustomItemsAdapter extends RecyclerView.Adapter<CustomItemsAdapter.
 
     @BindingAdapter("bind:imageUrl")
     public static void loadImage(ImageView imageView, String url) {
+        Picasso.with(imageView.getContext()).load(url).placeholder(R.drawable.no_image).resize(300, 300).into(imageView);
     }
 
     @Override

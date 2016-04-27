@@ -28,7 +28,7 @@
                 style="@style/ImageViewContainer">
                 <ImageView
                     android:id="@+id/iv_image"
-                    style="@style/WrapContentStyle"
+                    style="@style/IconIVStyle"
                     app:imageUrl="@{fact.imageHref}"
                     />
             </LinearLayout>
